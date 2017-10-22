@@ -28,10 +28,10 @@ public class CallableController {
   }
 
   @GetMapping("/callable/{name}")
-  public Callable<List<Person>> person(@PathVariable String name){
+  public Callable<Person> person(@PathVariable String name){
     return () -> {
       TimeUnit.SECONDS.sleep(2);
-      return generatorPersons.getPersons();
+      return generatorPersons.getPerson(name);
     };
   }
 }
