@@ -39,10 +39,10 @@ public class Testing implements AutoCloseable {
   public void run(long timeoutMs, final Runnable action) throws InterruptedException, TimeoutException {
     this.stopWatch.start();
     CountDownLatch countDownLatch = spawnThreads(action);
-    this.realCount = countDownLatch.getCount();
     if (!countDownLatch.await(timeoutMs, MILLISECONDS)) {
       throw new TimeoutException(timeoutMs, "timed out exception");
     }
+    this.realCount = countDownLatch.getCount();
     this.stopWatch.stop();
   }
 
