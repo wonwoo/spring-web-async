@@ -20,7 +20,7 @@ public class FutureController {
   }
 
   @GetMapping("/future")
-  public Future<List<Person>> future() {
+  public CompletableFuture<List<Person>> future() {
     return CompletableFuture.supplyAsync(generatorPersons::getPersons);
   }
 
