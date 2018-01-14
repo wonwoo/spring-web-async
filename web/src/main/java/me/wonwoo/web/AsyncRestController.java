@@ -33,7 +33,7 @@ public class AsyncRestController {
         null,
         new ParameterizedTypeReference<List<Person>>() {});
   }
-  @GetMapping("/future")
+  @GetMapping("/completableFuture")
   public CompletableFuture<ResponseEntity<List<Person>>> persons1() {
     return toListenableFuture(asyncRestTemplate.exchange("http://localhost:8081/persons",
         HttpMethod.GET,
